@@ -24,26 +24,20 @@ $ docker-compose build
 $ docker-compose up -d
 ```
 
-### 5. composer実行&データベース作成
+### 5. composer実行
 
 ```bash
-$ docker-compose exec php bash
+$ docker-compose exec web composer install
 ```
 
+### 6. migration反映
 ```bash
-$ composer install
-```
-マイグレーション実行
-```bash
-$ bin/cake migrations migrate
-```
-seed反映
-```bash
-$ bin/cake migrations seed
+$ docker-compose exec web bin/cake migrations migrate
 ```
 
+### 7. seed投入
 ```bash
-# exit
+$ docker-compose exec web bin/cake migrations seed
 ```
 
 ## 動作確認
